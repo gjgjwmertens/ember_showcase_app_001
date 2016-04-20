@@ -8,6 +8,9 @@
 /node_modules
 /bower_components
 
+# ide
+/.idea
+
 # misc
 /.sass-cache
 /connect.lock
