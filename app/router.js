@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('bugs');
+  this.route('gituser');
 });
 
 export default Router;
