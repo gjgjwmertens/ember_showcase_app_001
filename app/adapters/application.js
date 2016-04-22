@@ -1,4 +1,5 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import LSAdapter from 'ember-localstorage-adapter';
 
-export default JSONAPIAdapter.extend({
+export default LSAdapter.extend({
+   namespace: 'app-001'
 });

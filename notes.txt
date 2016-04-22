@@ -1,2 +1,14 @@
 git user example
    - http://emberigniter.com/fit-any-backend-into-ember-custom-adapters-serializers/
+
+find data:
+   - findAll
+   - peekAll (no server call)
+   - query('bug', {filter { title: 'Demo' }})
+   - queryRecord
+   - findRecord
+   - peek (no server call)
+
+record state:
+   - hasDirtyAttributes (property)
+   - changedAttributes (function)

@@ -1,9 +1,3 @@
-import JSONAPISerializer from 'ember-data/serializers/json-api';
-import Ember from 'ember';
+import { LSSerializer } from 'ember-localstorage-adapter';
 
-export default JSONAPISerializer.extend(
-   {
-      keyForAttribute: function (key) {
-         return Ember.String.decamelize(key);
-      }
-   });
+export default LSSerializer.extend();
