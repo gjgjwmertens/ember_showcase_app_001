@@ -12,3 +12,7 @@ find data:
 record state:
    - hasDirtyAttributes (property)
    - changedAttributes (function)
+
+ember:
+   - ember g route bugs --pod (creates the files in a separate directory)
+   - ember g route bugs/new (sub route)

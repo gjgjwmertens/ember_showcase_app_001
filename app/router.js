@@ -6,7 +6,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-   this.route('bugs');
+   this.route('bugs', function() {
+     this.route('new');
+     this.route('edit');
+   });
    this.route('gituser');
    this.route('repo');
 });

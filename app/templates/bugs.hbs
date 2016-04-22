@@ -1,2 +1,16 @@
-<h1>This is the bugs section</h1>
+<h1>This is the bugs section 2</h1>
+{{#link-to "bugs.new"}}New{{/link-to}}
+{{#link-to "bugs.edit"}}Edit{{/link-to}}
+
+{{#each model as |bug|}}
+<section class="bug-list-item">
+   <h3>{{bug.title}}</h3>
+   <ul>
+      <li>{{bug.id}}</li>
+      <li>{{bug.hasDirtyAttributes}}</li>
+      <li>{{bug.createdDate}}</li>
+   </ul>
+</section>
+{{/each}}
+
 {{outlet}}
