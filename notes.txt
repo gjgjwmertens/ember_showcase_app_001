@@ -1,0 +1,2 @@
+git user example
+   - http://emberigniter.com/fit-any-backend-into-ember-custom-adapters-serializers/

@@ -11,6 +11,13 @@ export default JSONAPISerializer.extend(
                   name: payload.name,
                   publicRepos: payload.public_repos
                }
+            },
+            relationships: {
+               repos: {
+                  links: {
+                     related: payload.repos_url
+                  }
+               }
             }
          };
       }
