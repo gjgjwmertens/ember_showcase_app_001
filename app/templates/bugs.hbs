@@ -1,16 +1,50 @@
 <h1>This is the bugs section 2</h1>
-{{#link-to "bugs.new"}}New{{/link-to}}
-{{#link-to "bugs.edit"}}Edit{{/link-to}}
-
-{{#each model as |bug|}}
-<section class="bug-list-item">
-   <h3>{{bug.title}}</h3>
-   <ul>
-      <li>{{bug.id}}</li>
-      <li>{{bug.hasDirtyAttributes}}</li>
-      <li>{{bug.createdDate}}</li>
-   </ul>
-</section>
-{{/each}}
-
+{{#link-to "bugs.new" tagName='button'}}New bug{{/link-to}}
+<p>***************************************************************</p>
 {{outlet}}
+<p>***************************************************************</p>
+<h2>{{testVar}}</h2>
+<p>***************************************************************</p>
+<h2>Bug list</h2>
+<button id="show_list_btn_id" {{action 'showBugList'}}>
+   {{#if showList}}Hide{{else}}Show{{/if}}
+</button>
+{{#if showList}}
+<div id="bug_list_container_id">
+   {{#each model as |bug|}}
+   <section class="bug-list-item">
+      <h3>{{bug.title}}</h3>
+      {{#link-to "bugs.details" bug.id tagName='button'}}Details{{/link-to}}
+      {{#link-to "bugs.edit" bug.id tagName='button'}}Edit{{/link-to}}
+      <ul>
+         <li>{{bug.id}}</li>
+         <li>{{bug.description}}</li>
+         <li>{{#unless bug.isActive}}Not {{/unless}}Active</li>
+         <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
+         <li>{{bug.createdDate}}</li>
+      </ul>
+   </section>
+   {{/each}}
+</div>
+{{/if}}
+<p>***************************************************************</p>
+<h2>Sorted list</h2>
+<button id="show_list_btn_id" {{action 'showSortedList'}}>
+   {{#if showSortedList}}Hide{{else}}Show{{/if}}
+</button>
+{{#if showSortedList}}
+<div id="bug_list_container_id">
+   {{#each sortedModel as |bug|}}
+      <section class="bug-list-item">
+         <h3>{{bug.title}}</h3>
+         <ul>
+            <li>{{bug.id}}</li>
+            <li>{{bug.description}}</li>
+            <li>{{#unless bug.isActive}}Not {{/unless}}Active</li>
+            <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
+            <li>{{bug.createdDate}}</li>
+         </ul>
+      </section>
+   {{/each}}
+</div>
+{{/if}}

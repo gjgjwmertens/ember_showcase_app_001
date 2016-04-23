@@ -8,7 +8,8 @@ const Router = Ember.Router.extend({
 Router.map(function () {
    this.route('bugs', function() {
      this.route('new');
-     this.route('edit');
+     this.route('edit', {path: 'edit/:id'});
+     this.route('details', {path: ':id'});
    });
    this.route('gituser');
    this.route('repo');
