@@ -12,18 +12,20 @@
 {{#if showList}}
 <div id="bug_list_container_id">
    {{#each model as |bug|}}
-   <section class="bug-list-item">
+   <article class="bug-list-item">
       <h3>{{bug.title}}</h3>
-      {{#link-to "bugs.details" bug.id tagName='button'}}Details{{/link-to}}
+      {{#link-to "bugs.details" bug tagName='button'}}Details{{/link-to}}
       {{#link-to "bugs.edit" bug.id tagName='button'}}Edit{{/link-to}}
       <ul>
          <li>{{bug.id}}</li>
          <li>{{bug.description}}</li>
-         <li>{{#unless bug.isActive}}Not {{/unless}}Active</li>
+         <li>{{#unless bug.isActive}}In{{/unless}}Active</li>
          <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
          <li>{{bug.createdDate}}</li>
       </ul>
-   </section>
+   </article>
+   {{else}}
+      <h3 style="color: red">No bugs</h3>
    {{/each}}
 </div>
 {{/if}}

@@ -5,11 +5,15 @@
       <li>{{model.id}}</li>
       <li>{{model.description}}</li>
       <li>{{#unless model.isActive}}Not {{/unless}}Active</li>
+      <li>
+         {{#x-select action='activeStateChanged' bug=model  value=model.isActive as |xs|}}
+            {{#xs.option value=false}}InActive{{/xs.option}}
+            {{#xs.option value=true}}Active{{/xs.option}}
+         {{/x-select}}
+      </li>
       <li>{{#if model.hasDirtyAttributes}}Not {{/if}}Saved</li>
       <li>{{model.createdDate}}</li>
    </ul>
 </section>
-
-{{log model}}
 
 {{outlet}}
