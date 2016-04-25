@@ -13,7 +13,7 @@ Router.map(function () {
             path: ':id'
          },
          function () {
-            this.route('comments', {resetNamespace: true},
+            this.route('comments',
             function () {
                this.route('new');
                this.route('edit', {

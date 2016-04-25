@@ -1,4 +1,10 @@
 <h1>Edit bug</h1>
+
+{{#bug-editor bug=model saveRedirect='afterEdit'}}
+   This is yield information and will be displayed in the
+   yield outlet of the component
+{{/bug-editor}}
+
 <section class="bug-list-item">
    <h3>{{model.title}}</h3>
    <ul>

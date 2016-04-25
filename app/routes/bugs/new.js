@@ -12,6 +12,9 @@ export default Ember.Route.extend({
             console.log('Bug saved: ' + bug.get('title'));
             router.transitionTo('bugs.details', bug);
          });
+      },
+      afterNew: function () {
+         this.transitionTo('bugs');
       }
    }
 });

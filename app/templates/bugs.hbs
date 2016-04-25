@@ -1,52 +1,55 @@
-<h1>This is the bugs section 2</h1>
-{{#link-to "bugs.new" tagName='button'}}New bug{{/link-to}}
-<p>***************************************************************</p>
-{{outlet}}
-<p>***************************************************************</p>
+<h1>This is the bugs section</h1>
 <h2>{{testVar}}</h2>
-<p>***************************************************************</p>
-<h2>Bug list</h2>
-<button id="show_list_btn_id" {{action 'showBugList'}}>
-   {{#if showList}}Hide{{else}}Show{{/if}}
-</button>
-{{#if showList}}
-<div id="bug_list_container_id">
-   {{#each model as |bug|}}
-   <article class="bug-list-item">
-      <h3>{{bug.title}}</h3>
-      {{#link-to "bugs.details" bug tagName='button'}}Details{{/link-to}}
-      {{#link-to "bugs.edit" bug.id tagName='button'}}Edit{{/link-to}}
-      <ul>
-         <li>{{bug.id}}</li>
-         <li>{{bug.description}}</li>
-         <li>{{#unless bug.isActive}}In{{/unless}}Active</li>
-         <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
-         <li>{{bug.createdDate}}</li>
-      </ul>
-   </article>
-   {{else}}
-      <h3 style="color: red">No bugs</h3>
-   {{/each}}
+{{#link-to "bugs.new" tagName='button'}}New bug{{/link-to}}
+<div class="row">
+   <div class="col-sm-5">
+      <h2>Bug list</h2>
+      <button id="show_list_btn_id" {{action 'showBugList'}}>
+         {{#if showList}}Hide{{else}}Show{{/if}}
+      </button>
+      {{#if showList}}
+         <div id="bug_list_container_id">
+            {{#each model as |bug|}}
+               <article class="bug-list-item">
+                  <h3>{{bug.title}}</h3>
+                  {{#link-to "bugs.details.comments" bug tagName='button'}}Details{{/link-to}}
+                  {{#link-to "bugs.edit" bug.id tagName='button'}}Edit{{/link-to}}
+                  <ul>
+                     <li>{{bug.id}}</li>
+                     <li>{{bug.description}}</li>
+                     <li>{{#unless bug.isActive}}In{{/unless}}Active</li>
+                     <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
+                     <li>{{bug.createdDate}}</li>
+                  </ul>
+               </article>
+            {{else}}
+               <h3 style="color: red">No bugs</h3>
+            {{/each}}
+         </div>
+      {{/if}}
+      <p>***************************************************************</p>
+      <h2>Sorted list</h2>
+      <button id="show_list_btn_id" {{action 'showSortedList'}}>
+         {{#if showSortedList}}Hide{{else}}Show{{/if}}
+      </button>
+      {{#if showSortedList}}
+         <div id="bug_list_container_id">
+            {{#each sortedModel as |bug|}}
+               <section class="bug-list-item">
+                  <h3>{{bug.title}}</h3>
+                  <ul>
+                     <li>{{bug.id}}</li>
+                     <li>{{bug.description}}</li>
+                     <li>{{#unless bug.isActive}}Not {{/unless}}Active</li>
+                     <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
+                     <li>{{bug.createdDate}}</li>
+                  </ul>
+               </section>
+            {{/each}}
+         </div>
+      {{/if}}
+   </div>
+   <div class="col-sm-7">
+      {{outlet}}
+   </div>
 </div>
-{{/if}}
-<p>***************************************************************</p>
-<h2>Sorted list</h2>
-<button id="show_list_btn_id" {{action 'showSortedList'}}>
-   {{#if showSortedList}}Hide{{else}}Show{{/if}}
-</button>
-{{#if showSortedList}}
-<div id="bug_list_container_id">
-   {{#each sortedModel as |bug|}}
-      <section class="bug-list-item">
-         <h3>{{bug.title}}</h3>
-         <ul>
-            <li>{{bug.id}}</li>
-            <li>{{bug.description}}</li>
-            <li>{{#unless bug.isActive}}Not {{/unless}}Active</li>
-            <li>{{#if bug.hasDirtyAttributes}}Not {{/if}}Saved</li>
-            <li>{{bug.createdDate}}</li>
-         </ul>
-      </section>
-   {{/each}}
-</div>
-{{/if}}

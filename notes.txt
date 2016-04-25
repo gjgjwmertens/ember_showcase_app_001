@@ -16,3 +16,21 @@ record state:
 ember:
    - ember g route bugs --pod (creates the files in a separate directory)
    - ember g route bugs/new (sub route)
+   - config/environment.js locationType to 'hash' will work on IIS no rewrite
+   - rewrite rule web.config (place in public, will be copied to dist):
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="CatchAll For Ember" patternSyntax="Wildcard" stopProcessing="true">
+                    <match url="*" />
+                    <action type="Rewrite" url="index.html" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                    </conditions>
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
