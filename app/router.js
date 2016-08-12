@@ -23,8 +23,9 @@ Router.map(function () {
          }
       );
    });
-   this.route('gituser');
-   this.route('repo');
+   this.route('gituser', function () {
+      this.route('repos');
+   });
 });
 
 export default Router;
